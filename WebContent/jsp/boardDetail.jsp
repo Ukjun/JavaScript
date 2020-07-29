@@ -21,13 +21,14 @@
     	BoardVO vo = new BoardVO();
     %>
     <%
-    
     Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
     String strI_board = request.getParameter("i_board");
     //String sql = "select title,ctnt,i_student from t_board where i_board = " + strI_board;
+    // 일반적인 sql문
     String sql = "select a.title, a.ctnt, a.i_student, b.nm from t_board A join t_student B on A.i_student = b.i_student where i_board = " + strI_board;
+    // join문까지 사용
     String name ="";
     try{
 		conn = getConn();
