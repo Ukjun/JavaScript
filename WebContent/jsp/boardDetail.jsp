@@ -38,7 +38,7 @@
 			vo.setTitle(rs.getString("title"));
 			vo.setI_student(rs.getInt("i_student"));
 			name = rs.getString("nm");
-			///
+			///...
 		}
     }catch(Exception e){
 		e.printStackTrace();
