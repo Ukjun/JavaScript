@@ -25,21 +25,32 @@
 	PreparedStatement ps = null;
 	ResultSet rs = null;
     String strI_board = request.getParameter("i_board");
-    //String sql = "select title,ctnt,i_student from t_board where i_board = " + strI_board;
+    if(strI_board==null){
+    	%>
+    		<script>
+    		alert("잘못된 접근");
+    		location.href='/jsp/boardList.jsp';
+    		</script>
+    	<% 		
+    	return;
+    }
+    int intI_board= Integer.parseInt(strI_board);
+    String sql = "select title,ctnt,i_student from t_board where i_board= ?"; 
     // 일반적인 sql문
-    String sql = "select a.title, a.ctnt, a.i_student, b.nm from t_board A join t_student B on A.i_student = b.i_student where i_board = " + strI_board;
+    //String sql = "select a.title, a.ctnt, a.i_student, b.nm from t_board A join t_student B on A.i_student = b.i_student where i_board = " + strI_board;
     // join문까지 사용
-    String name ="";
+    //String name ="";
     try{
 		conn = getConn();
 		ps = conn.prepareStatement(sql);
+		ps.setInt(1,intI_board);
 		rs = ps.executeQuery();
 		while(rs.next()){
 			vo.setCtnt(rs.getString("ctnt"));
 			vo.setTitle(rs.getString("title"));
 			vo.setI_student(rs.getInt("i_student"));
-			name = rs.getString("nm");
-			///...
+		//	name = rs.getString("nm");
+			///... ////
 		}
     }catch(Exception e){
 		e.printStackTrace();
@@ -71,11 +82,21 @@
 </head>
 <body>
 	<div>
+		<div>
+		<a href =  "/jsp/boardList.jsp">리스트로 가기</a>
+		<a href = "#" onclick ="preDel(<%=intI_board %>)">삭제</a>
+		</div>
 		<h2>상세 페이지: <%=strI_board %></h2>
 		<p><%=vo.getCtnt()%></p>
 		<p><%=vo.getTitle()%></p>
 		<p><%=vo.getI_student()%></p>
-		<p>Writer : <%=name%></p>
 	</div>
+	<script>
+		function preDel(intI_board){
+			if(confirm("삭제하시겠습니까?")){
+				location.href="/jsp/boardDel.jsp?intI_board=" + intI_board;
+			}
+		}
+	</script>
 </body>
 </html>
