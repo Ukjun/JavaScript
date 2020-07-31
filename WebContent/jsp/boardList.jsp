@@ -28,7 +28,7 @@
     	PreparedStatement ps = null;
     	ResultSet rs = null;
     	
-    	String sql = " select i_board, title,ctnt, i_student from t_board ";
+    	String sql = " select i_board, title,ctnt, i_student from t_board order by i_board";
     	
     	
     	try{
@@ -96,9 +96,12 @@
 		margin : 0 auto;
 		font-size : 1.5em;
 	}
+	
 </style>
 <body>
-	<div><h1>게시판 리스트</h1></div>
+	<div><h1>게시판 리스트</h1>
+	<a href = "/jsp/boardWrite.jsp"><button>글쓰기</button></a>
+	</div>
 	<table border=1  >
 		<tr>
 			<th>NO</th>
