@@ -46,7 +46,7 @@
         ps.setString(1,title);
         ps.setString(2,ctnt);
         ps.setString(3,strI_student);
-        result = ps.executeUpdate(); 
+        result = ps.executeUpdate();  //result값 반환안해서 넘어가지않았음
        	
     }catch(Exception e){
     	e.printStackTrace();
