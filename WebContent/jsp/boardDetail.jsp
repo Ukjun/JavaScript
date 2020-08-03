@@ -24,7 +24,7 @@
     Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-    String strI_board = request.getParameter("i_board");
+    String strI_board = request.getParameter("i_board"); // boardDetail에서 원하는 값 (request로 넘어오는 인자가 원하는 값이다ㅁ)
     if(strI_board==null){
     	%>
     		<script>
@@ -43,7 +43,7 @@
     try{
 		conn = getConn();
 		ps = conn.prepareStatement(sql);
-		ps.setInt(1,intI_board);
+		ps.setInt(1,intI_board); 
 		rs = ps.executeQuery();
 		while(rs.next()){
 			vo.setCtnt(rs.getString("ctnt"));
@@ -82,15 +82,15 @@
 </head>
 <body>
 	<div>
-		<div>
-		<a href =  "/jsp/boardList.jsp">리스트로 가기</a>
+		<a href ="/jsp/boardList.jsp">리스트로가기</a>
 		<a href = "#" onclick ="preDel(<%=intI_board %>)">삭제</a>
-		</div>
-		<h2>상세 페이지: <%=strI_board %></h2>
-		<p><%=vo.getCtnt()%></p>
-		<p><%=vo.getTitle()%></p>
-		<p><%=vo.getI_student()%></p>
+		<a href="/jsp/boardMod.jsp?i_board=<%=intI_board%>">수정</a>
 	</div>
+		<div><h2>상세 페이지: <%=strI_board %></h2></div>
+		<div><p><%=vo.getCtnt()%></p></div>
+		<div><p><%=vo.getTitle()%></p></div>
+		<div><p><%=vo.getI_student()%></p></div>
+	
 	<script>
 		function preDel(intI_board){
 			if(confirm("삭제하시겠습니까?")){
