@@ -21,10 +21,9 @@
     	BoardVO vo = new BoardVO();
     %>
     <%
-    	String strI_board = request.getParameter("i_board");
-   		int intI_board = Integer.parseInt(strI_board);
-    	Connection conn = null;
-    	PreparedStatement ps= null;
+    	String i_board = request.getParameter("i_board");
+  	 	Connection conn = null;
+   	    PreparedStatement ps= null;
     	
     %>
 <!DOCTYPE html>
@@ -34,7 +33,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action = "/jsp/boardModProc.jsp?i_board=<%=intI_board%>" method="post">
+	<form action = "boardModProc.jsp?i_board=<%=i_board%>" method="post">
 		<div>
 			<label>제목 : <input type="text" name="title"></label>
 		</div>
@@ -45,9 +44,9 @@
 			<label>작성자 : <input type = "text" name="i_student"></label>
 		</div>
 		<div>
-			<a href ="/jsp/boardWrite.jsp?i_board=<%=intI_board %>"><button>수정</button></a>
+			<input type="submit" value="수정" >
 		</div>
-		<div><%=intI_board %></div>
+		<div>intI_board=<%=i_board %></div>
 	</form>
 </body>
 </html>

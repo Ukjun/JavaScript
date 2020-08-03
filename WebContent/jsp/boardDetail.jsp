@@ -82,7 +82,7 @@
 </head>
 <body>
 	<div>
-		<a href ="/jsp/boardList.jsp">리스트로가기</a>
+		<a href ="/jsp/boardList.jsp">리스트로 가기</a>
 		<a href = "#" onclick ="preDel(<%=intI_board %>)">삭제</a>
 		<a href="/jsp/boardMod.jsp?i_board=<%=intI_board%>">수정</a>
 	</div>

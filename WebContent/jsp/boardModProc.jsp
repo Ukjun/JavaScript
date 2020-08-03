@@ -27,7 +27,9 @@
     String title = request.getParameter("title");
     String ctnt = request.getParameter("ctnt");
     String strI_student = request.getParameter("i_student");
-    String strI_board = request.getParameter("intI_board");
+    
+    
+    String strI_board = request.getParameter("i_board");
     
     
     int intI_board = Integer.parseInt(strI_board);
@@ -72,7 +74,7 @@
     	err = 20;
     	break;
     }
-    response.sendRedirect("boardWrite.jsp?err=" + err);
+    response.sendRedirect("/jsp/boardMod.jsp?err=" + err);
     %>
 <!DOCTYPE html>
 <html>
@@ -82,5 +84,6 @@
 </head>
 <body>
 	<div><%=strI_board %></div>
+
 </body>
 </html>
