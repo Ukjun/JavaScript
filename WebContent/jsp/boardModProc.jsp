@@ -46,7 +46,7 @@
         ps.setString(1,title);
         ps.setString(2,ctnt);
         ps.setString(3,strI_student);
-        ps.executeUpdate(); 
+        result = ps.executeUpdate(); 
        	
     }catch(Exception e){
     	e.printStackTrace();
