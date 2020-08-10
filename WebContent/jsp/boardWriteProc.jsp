@@ -27,7 +27,6 @@
     String title = request.getParameter("title");
     String ctnt = request.getParameter("ctnt");
     String strI_student = request.getParameter("i_student");
-    String strI_board = request.getParameter("intI_board");
     
     
     if("".equals(title)||"".equals(ctnt)||"".equals(strI_student)){
@@ -35,14 +34,13 @@
     	return;
     }
     
-    int intI_board = Integer.parseInt(strI_board);
     // boardWriteProc에서 원하는 값 title, ctnt, strI_student
     Connection conn = null;
     PreparedStatement ps= null;
    
     String sql = "insert into t_board(i_board, title,ctnt, i_student) "+
-    		"select nvl(max(i_board),0)+ 1,?,?,?"+"from t_board";
-    int result = 0;
+    		"select nvl(max(i_board),0)+ 1,?,?,? from t_board";
+    int result = -1;
     
     try{
     	conn = getConn();
@@ -52,17 +50,6 @@
         ps.setString(3,strI_student);
         result = ps.executeUpdate();
         
-        sql = "select nvl(max(i_board),0)+1 as boardIndex from t_board";
-       	ps = conn.prepareStatement(sql);
-       	ps.executeQuery();
-       	
-       	sql = "update t_board set title=?,ctnt=?,i_student=? where i_board="+intI_board;
-       	conn = getConn();
-    	ps = conn.prepareStatement(sql);
-    	ps.setString(1,title);
-        ps.setString(2,ctnt);
-        ps.setString(3,strI_student);
-    	ps.executeUpdate(); 
        	
     }catch(Exception e){
     	e.printStackTrace();
@@ -79,7 +66,7 @@
 		}
 	}
     int err=0; 
-    /* switch(result){
+    switch(result){
     case 1:
     	response.sendRedirect("/jsp/boardList.jsp");
     	return; // 메소드가 종료 (switch문이 종료되지않는다.)
@@ -90,7 +77,7 @@
     	err = 20;
     	break;
     }
-    response.sendRedirect("boardWrite.jsp?err=" + err); */
+    response.sendRedirect("boardWrite.jsp?err=" + err);
     %>
 <!DOCTYPE html>
 <html>
@@ -102,7 +89,6 @@
 <div>title : <%=title %></div>
 <div>ctnt : <%=ctnt %></div>
 <div>strI_student : <%=strI_student%></div>
-<div><%=strI_board %></div>
 <a href="/jsp/boardList.jsp">리스트로 이동</a>
 </body>
 </html>

@@ -23,12 +23,21 @@
 	#msg {
 		color: red;
 	}
-
+	.container{
+		width : 400px;
+		text-align : center;
+		border: 1px solid black;
+		float : left;
+		align-justify : justify;
+	}
+	#frm {
+		margin : 30px auto;
+	}
 </style>
 </head>
 <body>
 	<div id ="msg"><%=msg%></div>
-	<div>
+	<div class="container">
 		<form id = "frm" action="/jsp/boardWriteProc.jsp" method="post" onsubmit="return chk()">
 		<!--
 			on...으로 시작하면 이벤트를 나타낸다.
@@ -48,7 +57,7 @@
 		<div>
 			<label>작성자 : <input type = "text" name="i_student"></label>
 		</div>
-		<div>
+		<div class="div_button">
 			<input type="submit" value="글 등록" >
 			<input type="reset" value="다시 작성">
 		</div>
@@ -74,6 +83,7 @@
 				return false;
 			}else if(eleValid(frm.i_student,'작성자')){
 				return false;
+			}else{
 			}
 			/* if(frm.title.value==''){
 				alert('제목을 입력해 주세요')

@@ -79,18 +79,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	.menu{
+		display : inline-block;
+		border : 1px solid #fff;
+	}
+	
+	.menu a{
+		
+	}
+	.container{
+	text-align : center;
+	margin : 0 auto;
+	}
+	
+	.container h2{
+		margin-top: 50px;
+		color : #FF0040;'
+	}
+</style>
 </head>
 <body>
-	<div>
-		<a href ="/jsp/boardList.jsp">리스트로 가기</a>
-		<a href = "#" onclick ="preDel(<%=intI_board %>)">삭제</a>
-		<a href="/jsp/boardMod.jsp?i_board=<%=intI_board%>">수정</a>
-	</div>
+	<div class="container">
 		<div><h2>상세 페이지: <%=strI_board %></h2></div>
-		<div><p><%=vo.getCtnt()%></p></div>
-		<div><p><%=vo.getTitle()%></p></div>
-		<div><p><%=vo.getI_student()%></p></div>
-	
+		<div><p>제목 : <%=vo.getTitle()%></p></div>
+		<div><p>내용 : <%=vo.getCtnt()%></p></div>
+		<div><p>작성자 : <%=vo.getI_student()%></p></div>
+		
+		<div class="menu">
+			<a href ="/jsp/boardList.jsp">리스트로 가기</a>
+			<a href = "#" onclick ="preDel(<%=intI_board %>)">삭제</a>
+			<a href="/jsp/boardMod.jsp?i_board=<%=intI_board%>">수정</a>
+		</div>
+	</div>
 	<script>
 		function preDel(intI_board){
 			if(confirm("삭제하시겠습니까?")){

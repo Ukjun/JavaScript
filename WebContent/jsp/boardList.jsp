@@ -84,7 +84,7 @@
 <style>
 	h1{
 		text-align : center;
-		color : #ffccff;
+		color : #FE2EC8;
 		margin : 0 auto;
 	}
 	table{
@@ -96,11 +96,19 @@
 		margin : 0 auto;
 		font-size : 1.5em;
 	}
-	
+	.container, .btn_container{
+		text-align : center;
+		margin : 20px;
+		padding :10px;
+	}
+	.btn_container {
+		font-size : 1.2em;
+		
+	}
 </style>
 <body>
-	<div><h1>게시판 리스트</h1>
-	<a href = "/jsp/boardWrite.jsp"><button>글쓰기</button></a>
+	<div class="container">
+		<h1>게시판 리스트</h1>
 	</div>
 	<table border=1  >
 		<tr>
@@ -123,9 +131,9 @@
 			--> 
 		</tr>
 		<%}%>
-		<%
-			
-		%>
 	</table>
+	<div class="btn_container">
+		<a href = "/jsp/boardWrite.jsp"><button>글쓰기</button></a>
+	</div>
 </body>
 </html>
